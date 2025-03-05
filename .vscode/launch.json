@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringBootJwtTokenApplication<springBoot_jwt_token>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "backend.SpringBootJwtTokenApplication",
+            "projectName": "springBoot_jwt_token",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
