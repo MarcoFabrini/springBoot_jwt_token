@@ -1,6 +1,5 @@
 package backend.services.implementation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -24,7 +23,7 @@ public class UsersImplementation implements UsersService {
 		Authentication authentication = SecurityContextHolder
 				.getContext()
 				.getAuthentication();
-		
+
 		Users currentUser = (Users) authentication.getPrincipal();
 
 		return currentUser;
@@ -32,10 +31,8 @@ public class UsersImplementation implements UsersService {
 
 	@Override
 	public List<Users> listAllUsers() throws Exception {
-		List<Users> users = new ArrayList<>();
-		usersRepository.findAll().forEach(users::add);
-
-		return users;
-	}// allUsers
+		Users currentUser = getAuthenticatedUser(); // Ottieni l'utente autenticato
+		return usersRepository.findAllByIdNot(currentUser.getId()); // Escludi il suo ID
+	}// listAllUsers
 
 }// class
